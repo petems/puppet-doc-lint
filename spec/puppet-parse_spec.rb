@@ -10,12 +10,12 @@ shared_examples "standard tests" do |file, klass|
 
   subject { setup(file) }
 
-  it 'should be a PuppetDocLint::Result' do
-    subject.should be_a(PuppetDocLint::Result)
+  it 'should be a hash' do
+    subject.should be_a(Hash)
   end
 
   it 'class should have a name' do
-    subject.class_name.should_not be nil
+    subject.class.should_not be nil
   end
 
   it 'parameters and docs keys should be set' do
