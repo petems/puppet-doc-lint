@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'puppet-doc-lint'
+
+abort 'puppet-doc-lint: no arguments given ' if ARGV[0].nil?
+
+runner = PuppetDocLint::Runner.new
+
+path = ARGV[0]
+if File.directory?(path)
+  puppet_files = Dir.glob("#{path}/**/*.pp")
+  runner.run(puppet_files)
+else
+  runner.run(ARGV)
+end
