@@ -2,6 +2,8 @@
 
 Lint your Puppet files for RDoc coverage
 
+This project is heavily based on the puppet-parse code base, go check it out! :smile:
+
 ## Installation
 
     gem install puppet-doc-lint
