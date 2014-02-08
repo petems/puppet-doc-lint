@@ -1,10 +1,9 @@
 class PuppetDocLint
-  class Runner
+  class DocRunner
     def initialize  
     end
   
     def run(files)
-      output = {}
       runner_results = []
       files.each do |file|
         puppet_file_result = Result.new 
