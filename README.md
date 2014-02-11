@@ -17,6 +17,14 @@ You can report on one or more manifests by running
 
     puppet-doc-lint <path(s) to file(s)>
 
+For example:
+  
+```
+puppet-doc-lint ~/Projects/puppetlabs-firewall/manifests/linux/debian.pp
+class firewall::linux::debian Parameters are ["ensure", "enable"]
+class firewall::linux::debian Docs found are ["ensure", "enable"]
+```
+
 ### Rake task
 
 If you want to parse your entire modules directory, you can add
