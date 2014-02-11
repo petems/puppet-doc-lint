@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = PuppetDocLint::PUPPETDOCLINT_VERSION
 
+  gem.required_ruby_version = '>= 1.9.2'
+
   gem.add_development_dependency 'rspec', '~> 2.14.1'
   gem.add_development_dependency 'rake', '~> 10.1.1'
   gem.add_runtime_dependency 'rdoc', '>=3.12', '<4.0'
