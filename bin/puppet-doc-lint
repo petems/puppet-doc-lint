@@ -14,11 +14,11 @@ else
   results = runner.run(ARGV)
 end
 
-results.each do |result| 
-  puts "Class name was: #{result.class_name}"
-  puts "File name #{result.file_name}"
-  puts "Parameters found #{result.parameters}"
-  puts "No documentation error: #{result.no_documentation}"
-  puts "Documented parameters found: #{result.documented_parameters}"
-  puts "Undocumented parameters found: #{result.undocumented_parameters}"
-end
+# results.each do |result| 
+#   puts "Class name was: #{result.class_name}"
+#   puts "File name #{result.file_name}"
+#   puts "Parameters found #{result.parameters}"
+#   puts "No documentation error: #{result.no_documentation}"
+#   puts "Documented parameters found: #{result.documented_parameters}"
+#   puts "Undocumented parameters found: #{result.undocumented_parameters}"
+# end
