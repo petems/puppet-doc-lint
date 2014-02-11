@@ -28,7 +28,7 @@ describe PuppetDocLint::DocRunner do
   end
 
   it 'no documentation is nil' do
-    subject[0].no_documentation.should be_nil
+    subject[0].no_documentation.should be_false
   end
 
   it 'documented parameters' do
