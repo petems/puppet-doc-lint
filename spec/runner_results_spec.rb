@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-def setup(file)
-  run = PuppetDocLint::Runner.new
-  manifests = [ file ]
-  run.run(manifests)
-end
-
 describe PuppetDocLint::DocRunner do
   file = 'spec/manifests/define_rdoc.pp'  
   subject { setup(file) }
@@ -40,3 +34,4 @@ describe PuppetDocLint::DocRunner do
   end
 
 end
+
