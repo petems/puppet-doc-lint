@@ -7,3 +7,14 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
+
+def setup(file)
+  runner = PuppetDocLint::Runner.new
+  manifests = [ file ]
+  runner.run(manifests)
+end
+
+def setup_folder(files)
+  runner = PuppetDocLint::Runner.new
+  runner.run(files)
+end
