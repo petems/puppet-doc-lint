@@ -3,9 +3,18 @@ class PuppetDocLint
 
     def initialize(file)
       # Read file and return parsed object
-      pparser         = Puppet::Parser::Parser.new('production')
       if File.exists?(file)
         @file = File.expand_path(file)
+
+        string = File.open(@file, 'rb') { |file| file.read }
+
+        if string.match(/\(\{[\w]*\}\)/)
+          puts "Found a Hash!"
+          puts "Currently, hashes will break puppet current parser"
+        end
+
+        pparser = Puppet::Parser::Parser.new('production')
+
         pparser.import(@file)
 
         # Find object in list of hostclasses
@@ -25,7 +34,7 @@ class PuppetDocLint
     # Read parameters from parsed object, returns hash of parameters and default
     # values
     def parameters
-      result = (defined? @object.arguments) ? @object.arguments : {}
+      result = (defined? @object.arguments) ? @object.arguments : nil
       result
     end
 
@@ -45,11 +54,8 @@ class PuppetDocLint
         rdoc.parts.each do |part|
           if part.respond_to?(:items)
             part.items.each do |item|
-              # Skip rdoc items that aren't paragraphs
-              next unless (item.parts.to_s.scan("RDoc::Markup::Paragraph") == ["RDoc::Markup::Paragraph"])
-              # Documentation must be a list - if there's no label then skip
               next if item.label.nil?
-              key       = item.label.tr('^A-Za-z0-9_-', '')
+              key       = item.label.to_s.tr('^A-Za-z0-9_-', '')
               docs[key] = item.parts.first.parts
             end # do item
           end # endif
