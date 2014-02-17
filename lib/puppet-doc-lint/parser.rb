@@ -54,7 +54,6 @@ class PuppetDocLint
         rdoc.parts.each do |part|
           if part.respond_to?(:items)
             part.items.each do |item|
-              next if item.label.nil?
               key       = item.label.to_s.tr('^A-Za-z0-9_-', '')
               docs[key] = item.parts.first.parts
             end # do item
