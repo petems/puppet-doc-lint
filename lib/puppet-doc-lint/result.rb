@@ -11,12 +11,16 @@ class PuppetDocLint
     attribute :undocumented_parameters, String, :default => []
 
     def result_report
-      puts "Class name was: #{class_name}"
-      puts "File name #{file_name}"
+      puts "Class #{class_name} ( #{file_name} )"
       puts "Parameters found #{parameters}"
-      puts "No documentation error: #{no_documentation}"
-      puts "Documented parameters found: #{documented_parameters}"
-      puts "Undocumented parameters found: #{undocumented_parameters}\n\n"
+      if no_documentation
+        puts "No documentation error."
+        puts "If there is documentation, this may be a bug with the Puppet parser"
+        puts "Puppet files with newer features such as the use of hashes can cause this"
+      else
+        puts "Documented parameters found: #{documented_parameters}"
+        puts "Undocumented parameters found: #{undocumented_parameters}\n\n"
+      end
     end
 
   end #class Result
