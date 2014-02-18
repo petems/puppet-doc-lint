@@ -5,6 +5,7 @@ require 'puppet-doc-lint/runner'
 require 'puppet-doc-lint/doc_runner'
 require 'puppet-doc-lint/result'
 require 'puppet-doc-lint/hash'
+require 'puppet-doc-lint/string'
 require 'puppet-doc-lint/configuration'
 require 'rdoc'
 
