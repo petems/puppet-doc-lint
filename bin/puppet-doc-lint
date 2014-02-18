@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+class Numeric
+  def percent_of(n)
+    self.to_f / n.to_f * 100.0
+  end
+end
+
 require 'puppet-doc-lint'
 
 abort 'puppet-doc-lint: no arguments given ' if ARGV[0].nil?
@@ -15,6 +21,18 @@ else
   results = runner.run(ARGV)
 end
 
+errors = 0
+parameters_total = 0
+parameters_documented_total = 0
+
 results.each do |result| 
   result.result_report
-end
+  errors = errors + result.errors
+  parameters_total = parameters_total + result.parameters.size
+  parameters_documented_total = parameters_documented_total + result.documented_parameters.size 
+end 
+
+puts "Errors found: #{errors}"
+puts "Parameters Count: #{parameters_total}"
+puts "Parameters Documented Count: #{parameters_documented_total}"
+

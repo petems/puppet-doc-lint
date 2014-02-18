@@ -1,5 +1,11 @@
 require 'virtus'
 
+class Numeric
+  def percent_of(n)
+    self.to_f / n.to_f * 100.0
+  end
+end
+
 class PuppetDocLint
   class Result
     include Virtus.model
@@ -22,8 +28,21 @@ class PuppetDocLint
       else
         puts "Documented parameters found: #{documented_parameters}"
         puts "Undocumented parameters found: #{undocumented_parameters}"
+        puts "Documentation Coverage: #{percent_documented}%"
         puts "Parameters with Documentation but no defintion: #{documented_parameter_no_assignment}"
         puts "Authors: #{authors}\n\n"
+      end
+    end
+
+    def errors
+      undocumented_parameters.size + documented_parameter_no_assignment.size
+    end
+
+    def percent_documented
+      if documented_parameters.size == 0
+        100
+      else
+        documented_parameters.size.percent_of parameters.size
       end
     end
 

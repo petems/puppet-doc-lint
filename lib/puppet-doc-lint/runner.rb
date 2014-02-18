@@ -9,7 +9,7 @@ class PuppetDocLint
         next if content.instance_variable_get('@object').nil?
         parameters = (defined? content.parameters) ? content.parameters.paramflat : nil
         puppet_file_result.class_name = content.klass
-        puppet_file_result.no_documentation = true if content.docs == {}
+        puppet_file_result.no_documentation = true if content.docs == {} && content.authors == []
         result           = {
           content.klass  => {
             'parameters' => parameters,
