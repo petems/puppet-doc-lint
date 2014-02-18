@@ -29,7 +29,7 @@ class PuppetDocLint
       else
         puts "Documented parameters found: #{documented_parameters}".green
         puts "Undocumented parameters found: #{undocumented_parameters}".red
-        puts "Parameters with Documentation but no defintion: #{documented_parameter_no_assignment}".red unless authors.empty?
+        puts "Parameters with Documentation but no defintion: #{documented_parameter_no_assignment}".red unless documented_parameter_no_assignment.empty?
         puts "Documentation Coverage: #{percent_documented}%"
         puts "Authors: #{authors}" unless authors.empty?
       end
