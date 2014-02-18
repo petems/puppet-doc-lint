@@ -8,7 +8,7 @@ runner = PuppetDocLint::Runner.new
 
 path = ARGV[0]
 if File.directory?(path)
-  puppet_files = Dir.glob("#{path}/**/*.pp")
+  puppet_files = Dir.glob("#{path}/*.pp")
   puts "Puppet docs to be checked: #{puppet_files}\n\n"
   results = runner.run(puppet_files)
 else
