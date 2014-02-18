@@ -1,5 +1,11 @@
 require 'virtus'
 
+class Numeric
+  def percent_of(n)
+    self.to_f / n.to_f * 100.0
+  end
+end
+
 class PuppetDocLint
   class Result
     include Virtus.model
@@ -9,6 +15,8 @@ class PuppetDocLint
     attribute :no_documentation, Boolean, :default => false
     attribute :documented_parameters,   String, :default => []
     attribute :undocumented_parameters, String, :default => []
+    attribute :documented_parameter_no_assignment, String, :default => []
+    attribute :authors, String, :default => []
 
     def result_report
       puts "===================================="
