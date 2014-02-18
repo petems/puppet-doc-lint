@@ -15,6 +15,33 @@ else
   results = runner.run(ARGV)
 end
 
+parameters_total = 0
+parameters_documented_total = 0
+parameters_undocumented_total = 0
+parameters_missing_total = 0
+tally = 0
+
 results.each do |result| 
+  tally = tally + 1
   result.result_report
+  parameters_undocumented_total = parameters_undocumented_total + result.undocumented_parameters.size
+  parameters_total = parameters_total + result.parameters.size
+  parameters_documented_total = parameters_documented_total + result.documented_parameters.size 
+  parameters_missing_total = parameters_missing_total + result.documented_parameter_no_assignment.size 
+end 
+
+coverage = 100
+
+coverage = parameters_documented_total.percent_of(parameters_total) unless parameters_total == 0
+
+puts "\n\n"
+puts "Number of files: #{tally}"
+puts "Total variables: #{parameters_total}"
+puts "Total missing variables: #{parameters_total}"
+puts "Documented variables: #{parameters_documented_total}"
+puts "Documentation coverage: #{coverage.round(2)}%"
+
+if (parameters_missing_total + parameters_undocumented_total) > 0
+  puts "Issues found!".bold.green.bg_red
+  exit 1
 end
