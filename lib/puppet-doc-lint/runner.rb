@@ -21,9 +21,11 @@ class PuppetDocLint
         
         undocumented = parameters.keys - content.docs.keys
         documented = parameters.keys - undocumented
+        documented_parameter_no_assignment = content.docs.keys - parameters.keys
 
         puppet_file_result.documented_parameters = documented unless documented.empty?
         puppet_file_result.undocumented_parameters = undocumented unless undocumented.empty?
+        puppet_file_result.documented_parameter_no_assignment = documented_parameter_no_assignment unless documented_parameter_no_assignment.empty?
         
         runner_results << puppet_file_result        
       end

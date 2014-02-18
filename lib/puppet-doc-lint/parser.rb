@@ -50,8 +50,7 @@ class PuppetDocLint
       if !@object.doc.nil?
         rdoc            = RDoc::Markup.parse(@object.doc)
         docs            = {}
-
-        rdoc.parts.each do |part|
+        rdoc.parts.each do |part| 
           if part.respond_to?(:items)
             part.items.each do |item|
               key       = item.label.to_s.tr('^A-Za-z0-9_-', '')
@@ -59,7 +58,7 @@ class PuppetDocLint
             end # do item
           end # endif
         end # do parm
-        docs
+        docs.kill_blank_keys
       end # if nil?
     end # def docs
   end # class Parser

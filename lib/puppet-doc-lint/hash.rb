@@ -9,5 +9,9 @@ class Hash
 
     result
   end
+
+  def kill_blank_keys
+    delete_if { |k, v| k == '' }
+  end
   
 end
