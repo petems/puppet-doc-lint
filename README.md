@@ -1,5 +1,6 @@
 # puppet-doc-lint
 [![Build Status](https://travis-ci.org/petems/puppet-doc-lint.png?branch=master)](https://travis-ci.org/petems/puppet-doc-lint)
+
 Lint your Puppet files for RDoc coverage
 
 This project is heavily based on the puppet-parse code base, go check it out! :smile:
