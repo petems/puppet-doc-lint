@@ -10,6 +10,7 @@ class PuppetDocLint
     attribute :documented_parameters,   String, :default => []
     attribute :undocumented_parameters, String, :default => []
     attribute :documented_parameter_no_assignment, String, :default => []
+    attribute :authors, String, :default => []
 
     def result_report
       puts "Class #{class_name} ( #{file_name} )"
@@ -21,7 +22,8 @@ class PuppetDocLint
       else
         puts "Documented parameters found: #{documented_parameters}"
         puts "Undocumented parameters found: #{undocumented_parameters}"
-        puts "Parameters with Documentation but no defintion: #{documented_parameter_no_assignment}\n\n"
+        puts "Parameters with Documentation but no defintion: #{documented_parameter_no_assignment}"
+        puts "Authors: #{authors}\n\n"
       end
     end
 
