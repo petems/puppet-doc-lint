@@ -10,6 +10,11 @@
 #
 # [*param_one*]
 #    Param1 documentation text
+#
+# == Authors
+#
+# Some Author <some@author.com>
+#
 class parameters_rdoc (
   $param_one = true,
   $param_two = '',

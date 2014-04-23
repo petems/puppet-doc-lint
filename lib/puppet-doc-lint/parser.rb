@@ -64,8 +64,8 @@ class PuppetDocLint
 
         author_docs.each do | doc_chunk |
           unless doc_chunk[1].class == RDoc::Markup::BlankLine || doc_chunk[1].class == RDoc::Markup::Heading
-            doc_chunk[1].items.each do |chunk|
-              authors << chunk.parts.first.parts
+            doc_chunk[1].parts.each do |chunk|
+              authors << chunk
             end
           end
         end
