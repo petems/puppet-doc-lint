@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PuppetDocLint::DocRunner do  
+describe PuppetDocLint::DocRunner do
   shared_examples "standard tests" do | file, klass |
     subject { setup(file) }
 
@@ -64,13 +64,13 @@ describe PuppetDocLint::DocRunner do
     end
   end
 
-  describe "run on an directory" do 
+  describe "run on an directory" do
     puppet_files = Dir.glob('spec/manifests/**/*.pp')
     subject { setup_folder(puppet_files) }
 
     it "should return a multi-element array" do
       subject.class.should be(Array)
-      subject.size.should eql(7)
+      subject.size.should eql(8)
     end
 
   end
@@ -80,9 +80,9 @@ describe PuppetDocLint::DocRunner do
     klass = 'parameters_rdoc'
     it_should_behave_like "standard tests", file, klass
     it_should_behave_like "parameters", file, klass
-    it_should_behave_like "rdoc", file, klass    
-    it_should_behave_like "nothing undocumented", file, klass 
-  end 
+    it_should_behave_like "rdoc", file, klass
+    it_should_behave_like "nothing undocumented", file, klass
+  end
 
   describe "manifest with parameters and no rdoc" do
     file = 'spec/manifests/parameters_nordoc.pp'
@@ -90,41 +90,41 @@ describe PuppetDocLint::DocRunner do
     it_should_behave_like "standard tests", file, klass
     it_should_behave_like "parameters", file, klass
     it_should_behave_like "no rdoc", file, klass
-    it_should_behave_like "something undocumented", file, klass         
-  end 
+    it_should_behave_like "something undocumented", file, klass
+  end
 
   describe "manifest with no parameters and rdoc" do
     file = 'spec/manifests/noparameters_rdoc.pp'
     klass = 'noparameters_rdoc'
     it_should_behave_like "standard tests", file, klass
     it_should_behave_like "no parameters", file, klass
-    it_should_behave_like "rdoc", file, klass    
-    it_should_behave_like "something undocumented", file, klass 
-  end 
+    it_should_behave_like "rdoc", file, klass
+    it_should_behave_like "something undocumented", file, klass
+  end
 
   describe "manifest with no parameters and no rdoc" do
     file = 'spec/manifests/noparameters_nordoc.pp'
     klass = 'noparameters_nordoc'
     it_should_behave_like "standard tests", file, klass
     it_should_behave_like "no parameters", file, klass
-    it_should_behave_like "no rdoc", file, klass      
-    it_should_behave_like "something undocumented", file, klass   
-  end 
+    it_should_behave_like "no rdoc", file, klass
+    it_should_behave_like "something undocumented", file, klass
+  end
 
   describe "define with rdoc" do
     file = 'spec/manifests/define_rdoc.pp'
     klass = 'define_rdoc'
     it_should_behave_like "standard tests", file, klass
-    it_should_behave_like "rdoc", file, klass    
-    it_should_behave_like "nothing undocumented", file, klass 
+    it_should_behave_like "rdoc", file, klass
+    it_should_behave_like "nothing undocumented", file, klass
   end
 
   describe "define with no rdoc" do
     file = 'spec/manifests/define_nordoc.pp'
     klass = 'define_nordoc'
     it_should_behave_like "standard tests", file, klass
-    it_should_behave_like "no rdoc", file, klass 
-    it_should_behave_like "something undocumented", file, klass    
+    it_should_behave_like "no rdoc", file, klass
+    it_should_behave_like "something undocumented", file, klass
   end
 
 end

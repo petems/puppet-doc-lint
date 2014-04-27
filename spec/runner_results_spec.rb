@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe PuppetDocLint::DocRunner do
 
-  context 'define_rdoc' do  
+  context 'define_rdoc' do
 
-    file = 'spec/manifests/define_rdoc.pp'  
+    file = 'spec/manifests/define_rdoc.pp'
     subject { setup(file) }
 
     it 'result should be an array of PuppetDocLint::Result' do
@@ -38,8 +38,8 @@ describe PuppetDocLint::DocRunner do
 
   end
 
-  context 'define_rdoc' do
-    file = 'spec/manifests/nested_bullets.pp'  
+  context 'nested_bullets' do
+    file = 'spec/manifests/nested_bullets.pp'
     subject { setup(file) }
 
     it 'result should be an array of PuppetDocLint::Result' do
@@ -69,6 +69,16 @@ describe PuppetDocLint::DocRunner do
 
     it 'undocumented_parameters parameters' do
       subject[0].undocumented_parameters.should eql []
+    end
+  end
+
+  context 'no_author.pp' do
+    file = 'spec/manifests/no_author.pp'
+    subject { setup(file) }
+
+    it 'result should be an array of PuppetDocLint::Result' do
+      subject.class.should be(Array)
+      subject[0].class.should be(PuppetDocLint::Result)
     end
   end
 
