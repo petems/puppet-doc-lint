@@ -37,7 +37,7 @@ coverage = parameters_documented_total.percent_of(parameters_total) unless param
 puts "\n\n"
 puts "Number of files: #{tally}"
 puts "Total variables: #{parameters_total}"
-puts "Total missing variables: #{parameters_total}"
+puts "Total missing variables: #{parameters_undocumented_total}"
 puts "Documented variables: #{parameters_documented_total}"
 puts "Documentation coverage: #{coverage.round(2)}%"
 
