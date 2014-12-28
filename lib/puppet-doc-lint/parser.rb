@@ -3,7 +3,7 @@ class PuppetDocLint
 
     def initialize(file)
       # Read file and return parsed object
-      pparser         = Puppet::Parser::Parser.new('production')
+      pparser = Puppet::Parser::Parser.new(Puppet::Node::Environment.new('production'))
       if File.exists?(file)
         @file = File.expand_path(file)
         pparser.import(@file)
