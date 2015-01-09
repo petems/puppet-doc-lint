@@ -63,7 +63,7 @@ class PuppetDocLint
         author_docs = rdoc.parts.chunk{|i|i.class == RDoc::Markup::Heading && i.text == 'Authors'}.reject{|sep,ans| sep}.map{|sep,ans| ans}
 
         author_docs.each do | doc_chunk |
-          unless doc_chunk[1].class == RDoc::Markup::BlankLine || doc_chunk[1].class == RDoc::Markup::Heading
+          unless doc_chunk[1].class == RDoc::Markup::BlankLine || doc_chunk[1].class == RDoc::Markup::Heading || !doc_chunk[1].respond_to?(:items)
             doc_chunk[1].items.each do |chunk|
               authors << chunk.parts.first.parts
             end
