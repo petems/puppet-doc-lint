@@ -23,9 +23,11 @@ class PuppetDocLint
       puts "Class #{class_name} ( #{file_name} )".bg_blue
       puts "Parameters found #{parameters}"
       if no_documentation
-        puts "No documentation found."
-        puts "If there is documentation, this may be a bug with the Puppet parser"
-        puts "Puppet files with newer features such as the use of hashes can cause this\n\n"
+        puts "No documentation found.".red
+        puts "Possible reasons:"
+        puts "* The documentation is not formatted in the RDoc format"
+        puts "* There's a bug in the puppet documentation parser"
+        puts "* There is no documentation at all"
       else
         puts "Documented parameters found: #{documented_parameters}".green
         puts "Undocumented parameters found: #{undocumented_parameters}".red
