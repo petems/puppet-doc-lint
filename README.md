@@ -3,12 +3,47 @@
 
 Lint your Puppet files for RDoc coverage
 
-This project is heavily based on the puppet-parse code base, go check it out! :smile:
+This project is heavily based on the [puppet-parse](https://github.com/johanek/puppet-parse) code base, go check it out! :smile:
+
+## Assumptions
+
+This assumes that you're formatting your documentation in Puppet with [RDoc formatting](http://rdoc.sourceforge.net/doc/).
+
+For example _this_ will work:
+
+```Rdoc
+# == Class: foo
+#
+# This module manages foo
+#
+# === Parameters
+#
+# [*ensure*]
+#   Controls presence of package and stuff
+#
+# === Authors
+#
+# * Jane Doe <mailto:jane.doe@fakecorp.com>
+#
+```
+
+_This_ will not:
+
+```
+# Class: foo
+#
+# This module manages foo
+#
+# Parameters:
+# 	- $ensure
+#
+# Authors: Jane Doe <mailto:jane.doe@fakecorp.com>
+#
+```
 
 ## Installation
 
     gem install puppet-doc-lint
-
 
 ## Usage
 
@@ -27,6 +62,8 @@ class firewall::linux::debian Docs found are ["ensure", "enable"]
 ```
 
 ### Rake task
+
+** Currrently broken maybe? **
 
 If you want to parse your entire modules directory, you can add
 `require 'puppet-doc-lint/rake-task' to your Rakefile and then run
