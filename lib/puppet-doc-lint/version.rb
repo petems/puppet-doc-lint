@@ -1,3 +1,3 @@
 class PuppetDocLint
-  PUPPETDOCLINT_VERSION = "0.2.0"
+  PUPPETDOCLINT_VERSION = "0.3.0"
 end

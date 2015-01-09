@@ -70,7 +70,8 @@ describe PuppetDocLint::DocRunner do
 
     it "should return a multi-element array" do
       subject.class.should be(Array)
-      subject.size.should eql(7)
+      # Count of how many test manifests we have
+      subject.size.should eql(8)
     end
 
   end
@@ -125,6 +126,12 @@ describe PuppetDocLint::DocRunner do
     it_should_behave_like "standard tests", file, klass
     it_should_behave_like "no rdoc", file, klass 
     it_should_behave_like "something undocumented", file, klass    
+  end
+
+  describe "badly formatted author block" do
+    file = 'spec/manifests/bad_author_block.pp'
+    klass = 'apt::backports'
+    it_should_behave_like "standard tests", file, klass
   end
 
 end
