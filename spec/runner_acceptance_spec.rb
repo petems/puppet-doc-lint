@@ -70,7 +70,8 @@ describe PuppetDocLint::DocRunner do
 
     it "should return a multi-element array" do
       subject.class.should be(Array)
-      subject.size.should eql(7)
+      # Count of how many test manifests we have
+      subject.size.should eql(8)
     end
 
   end
