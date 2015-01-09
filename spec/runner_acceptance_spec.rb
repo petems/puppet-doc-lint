@@ -128,5 +128,11 @@ describe PuppetDocLint::DocRunner do
     it_should_behave_like "something undocumented", file, klass    
   end
 
+  describe "badly formatted author block" do
+    file = 'spec/manifests/bad_author_block.pp'
+    klass = 'apt::backports'
+    it_should_behave_like "standard tests", file, klass
+  end
+
 end
 
