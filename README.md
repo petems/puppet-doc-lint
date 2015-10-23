@@ -3,7 +3,6 @@
 This is now deprecated in favour of [Puppet Strings](https://github.com/puppetlabs/puppetlabs-strings)
 
 # puppet-doc-lint
-[![Build Status](https://travis-ci.org/petems/puppet-doc-lint.png?branch=master)](https://travis-ci.org/petems/puppet-doc-lint)
 
 Lint your Puppet files for RDoc coverage
 
